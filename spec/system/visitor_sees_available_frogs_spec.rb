@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Visitor sees available frogs' do
   it 'successfully' do
-    #ARRANGE
+    # ARRANGE
     Frog.create!(
       name: 'Sapo saposaposapo',
       scientific_name: 'Sapo normal',
@@ -21,13 +21,13 @@ describe 'Visitor sees available frogs' do
       on_sale: false
     )
 
-    #ACT
+    # ACT
     visit root_path
     click_on 'Sapos disponíveis'
 
-    #ASSERT
+    # ASSERT
     expect(page).to_not have_content('Não há nenhum sapo ainda :(')
-    expect(page).to have_css('.frog', count:2)
+    expect(page).to have_css('.frog', count: 2)
     expect(page).to have_content('Sapo saposaposapo')
     expect(page).to have_content('Sapo saposaposapo2')
     expect(page).to have_content('123.456.789-27')
@@ -35,11 +35,11 @@ describe 'Visitor sees available frogs' do
   end
 
   it 'unless there arent any frogs' do
-    #ACT
+    # ACT
     visit root_path
     click_on 'Sapos disponíveis'
 
-    #ASSERT
+    # ASSERT
     expect(page).to have_content('Não há nenhum sapo ainda :(')
   end
 end
