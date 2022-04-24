@@ -10,6 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2022_04_24_191711) do
+
+  create_table "frogs", force: :cascade do |t|
+    t.string "name"
+    t.string "scientific_name"
+    t.string "cpf"
+    t.string "color"
+    t.integer "age"
+    t.boolean "on_sale"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end

@@ -1,0 +1,26 @@
+require:
+   - 'rubocop-rails'
+
+AllCops:
+   TargetRubyVersion: 2.7
+   Exclude:
+      - 'bin/**/*'
+      - 'db/**/*'
+      - 'spec/spec_helper.rb'
+      - 'spec/rails_helper.rb'
+      - 'config/puma.rb'
+      - 'config/initializers/**/*'
+      - 'config/environments/**/*'
+      - 'config/application.rb'
+
+Metrics/BlockLength:
+ IgnoredMethods: ['describe', 'context', 'feature', 'scenario', 'let', 'it', 'draw', 'xit']
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+ Enabled: false
+
+Style/FrozenStringLiteralComment:
+ Enabled: false
