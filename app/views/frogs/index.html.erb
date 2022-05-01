@@ -3,12 +3,14 @@
 <% else %>
     <% @frogs.each do |frog| %>
         <div class="frog">
-            <h2><%= frog.name %></h2>
-            <span><%= frog.scientific_name %></span>
-            <span><%= frog.color %></span>
-            <span><%= frog.age %> anos</span>
-            <span><%= frog.cpf %></span>
-            <span>A venda? <%= frog.on_sale ? 'sim' : 'nao' %></span>
+            <h2>
+            <%= link_to frog.name, frog_path(frog) %>
+            </h2>
+            <p><%= frog.scientific_name %></p>
+            <p><%= frog.color %></p>
+            <p><%= frog.age %> anos</p>
+            <p><%= frog.cpf %></p>
+            <p>A venda? <%= frog.on_sale ? 'sim' : 'nao' %></p>
         </div>
     <% end %>
 <% end %>
