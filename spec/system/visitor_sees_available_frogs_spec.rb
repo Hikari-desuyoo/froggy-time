@@ -3,23 +3,7 @@ require 'rails_helper'
 describe 'Visitor sees available frogs' do
   it 'successfully' do
     # ARRANGE
-    Frog.create!(
-      name: 'Sapo saposaposapo',
-      scientific_name: 'Sapo normal',
-      cpf: '123.456.789-27',
-      color: 'red',
-      age: 23,
-      on_sale: true
-    )
-
-    Frog.create!(
-      name: 'Sapo saposaposapo2',
-      scientific_name: 'Sapo esquisito',
-      cpf: '123.456.456-27',
-      color: 'green',
-      age: 3,
-      on_sale: false
-    )
+    frogs = create_list(:frog, 2)
 
     # ACT
     visit root_path
@@ -28,10 +12,13 @@ describe 'Visitor sees available frogs' do
     # ASSERT
     expect(page).to_not have_content('Não há nenhum sapo ainda :(')
     expect(page).to have_css('.frog', count: 2)
-    expect(page).to have_content('Sapo saposaposapo')
-    expect(page).to have_content('Sapo saposaposapo2')
-    expect(page).to have_content('123.456.789-27')
-    expect(page).to have_content('123.456.456-27')
+    frogs.each do |frog|
+      expect(page).to have_content(frog.name)
+      expect(page).to have_content(frog.cpf)
+      expect(page).to have_content(frog.scientific_name)
+      expect(page).to have_content(frog.color)
+    end
+
   end
 
   it 'unless there arent any frogs' do
